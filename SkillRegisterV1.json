@@ -1,0 +1,466 @@
+{
+  "ApplicationName": "SkillRegisterV1",
+  "DisplayName": "SkillRegisterV1",
+  "Description": "Allows verification of skills for potential candidate",
+  "ApplicationRoles": [
+    {
+      "Name": "Appraiser",
+      "Description": "User that signs off on the skill verification"
+    },
+    {
+      "Name": "Employer",
+      "Description": "User that requests for skill verification"
+    },
+    {
+      "Name": "Inspector",
+      "Description": "User that inspects the skill verification request and signs off on inspection"
+    },
+    {
+      "Name": "IndividualUser",
+      "Description": "User that requests skill verification"
+    }
+  ],
+  "Workflows": [
+    {
+      "Name": "SkillRegisterV1",
+      "DisplayName": "SkillRegisterV1",
+      "Description": "Handles the business logic for the Skill verification scenario",
+      "Initiators": [ "IndividualUser" ],
+      "StartState":  "Active",
+      "Properties": [
+        {
+          "Name": "State",
+          "DisplayName": "State",
+          "Description": "Holds the state of the contract",
+          "Type": {
+            "Name": "state"
+          }
+        },
+        {
+          "Name": "SkillName",
+          "DisplayName": "Skill Name",
+          "Description": "The Skill Name",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "AskingSalary",
+          "DisplayName": "AskingSalary",
+          "Description": "AskingSalary",
+          "Type": {
+            "Name": "int"
+          }
+        },
+	      {
+          "Name": "CertificateURL",
+          "DisplayName": "CertificateURL",
+          "Description": "CertificateURL",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "Institution",
+          "DisplayName": "Institution",
+          "Description": "Institution",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "SkillDate",
+          "DisplayName": "SkillDate",
+          "Description": "SkillDate",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "SkillExpiryDate",
+          "DisplayName": "SkillExpiryDate",
+          "Description": "SkillExpiryDate",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "OfferSalary",
+          "DisplayName": "OfferSalary",
+          "Description": "OfferSalary",
+          "Type": {
+            "Name": "int"
+          }
+        },
+        {
+          "Name": "SkillAppraiser",
+          "DisplayName": "Instance Appraiser",
+          "Description": "The user that appraises the skill",
+          "Type": {
+            "Name": "Appraiser"
+          }
+        },
+        {
+          "Name": "Employer",
+          "DisplayName": "Instance Employer",
+          "Description": "The user that places an request for skill verification",
+          "Type": {
+            "Name": "Employer"
+          }
+        },
+        {
+          "Name": "SkillInspector",
+          "DisplayName": "Instance Inspector",
+          "Description": "The user that inspects this skill",
+          "Type": {
+            "Name": "Inspector"
+          }
+        },
+        {
+          "Name": "CertifiedProfessional",
+          "DisplayName": "Instance IndividualUser",
+          "Description": "The requestor of this particular skill verification",
+          "Type": {
+            "Name": "IndividualUser"
+          }
+        }
+      ],
+      "Constructor": {
+        "Parameters": [
+          {
+          "Name": "skillName",
+          "DisplayName": "skillName",
+          "Description": "The skillName",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "salary",
+          "DisplayName": "salary",
+          "Description": "salary",
+          "Type": {
+            "Name": "int"
+          }
+        },
+	    {
+          "Name": "certificateURL",
+          "DisplayName": "certificateURL",
+          "Description": "certificateURL",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "skillDate",
+          "DisplayName": "skillDate",
+          "Description": "skillDate",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "skillExpiryDate",
+          "DisplayName": "skillExpiryDate",
+          "Description": "skillExpiryDate",
+          "Type": {
+            "Name": "string"
+          }
+        },
+        {
+          "Name": "institution",
+          "DisplayName": "institution",
+          "Description": "institution",
+          "Type": {
+            "Name": "string"
+          }
+        }
+        ]
+      },
+      "Functions": [
+        {
+          "Name": "Terminate",
+          "DisplayName": "Terminate",
+          "Description": "Used to cancel this particular instance of skill verification",
+          "Parameters": []
+        },
+        {
+          "Name": "MakeOffer",
+          "DisplayName": "Request Skill Verification",
+          "Description": "Make Skill Verification",
+          "Parameters": [
+            {
+              "Name": "inspector",
+              "Description": "Specify a user to inspect this skill verification",
+              "DisplayName": "Inspector",
+              "Type": {
+                "Name": "Inspector"
+              }
+            },
+            {
+              "Name": "appraiser",
+              "Description": "Specify a user to appraise this skill",
+              "DisplayName": "Appraiser",
+              "Type": {
+                "Name": "Appraiser"
+              }
+            },
+            {
+              "Name": "skillName",
+              "Description": "skillName",
+              "DisplayName": "skillName",
+              "Type": {
+                "Name": "string"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Reject",
+          "DisplayName": "Reject",
+          "Description": "Reject the verification",
+          "Parameters": []
+        },
+        {
+          "Name": "AcceptOffer",
+          "DisplayName": "AcceptOffer",
+          "Description": "AcceptOffer",
+          "Parameters": []
+        },
+        {
+          "Name": "Accept",
+          "DisplayName": "Accept",
+          "Description": "Accept the inspection/appraisal results",
+          "Parameters": []
+        },
+        {
+          "Name": "MarkInspected",
+          "DisplayName": "Mark Inspected",
+          "Description": "Mark the skill as inspected",
+          "Parameters": []
+        },
+        {
+          "Name": "MarkAppraised",
+          "DisplayName": "Mark Appraised",
+          "Description": "Mark the skill as appraised",
+          "Parameters": []
+        }
+      ],
+      "States": [
+        {
+          "Name": "Active",
+          "DisplayName": "Active",
+          "Description": "The initial state of the skill verification workflow",
+          "PercentComplete": 20,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Cancels this instance of skill verification",
+              "Function": "Terminate",
+              "NextStates": [ "Terminated" ],
+              "DisplayName": "Terminate request"
+            },
+            {
+              "AllowedRoles": [ "Employer" ],
+              "AllowedInstanceRoles": [],
+              "Description": "Make an request for this skill",
+              "Function": "MakeOffer",
+              "NextStates": [ "OfferPlaced" ],
+              "DisplayName": "Make request"
+            }
+          ]
+        },
+        {
+          "Name": "OfferPlaced",
+          "DisplayName": "request Placed",
+          "Description": "request has been placed for the skill",
+          "PercentComplete": 30,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Accept the proposed request for the skill",
+              "Function": "AcceptOffer",
+              "NextStates": [ "PendingInspection" ],
+              "DisplayName": "Accept request"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Reject the proposed request for the skill",
+              "Function": "Reject",
+              "NextStates": [ "Active" ],
+              "DisplayName": "Reject"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Cancel this instance of skill verification",
+              "Function": "Terminate",
+              "NextStates": [ "Terminated" ],
+              "DisplayName": "Terminate"
+            }
+          ]
+        },
+        {
+          "Name": "PendingInspection",
+          "DisplayName": "Pending Inspection",
+          "Description": "skill is pending inspection",
+          "PercentComplete": 40,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Reject the request",
+              "Function": "Reject",
+              "NextStates": [ "Active" ],
+              "DisplayName": "Reject"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Cancel the request",
+              "Function": "Terminate",
+              "NextStates": [ "Terminated" ],
+              "DisplayName": "Terminate"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "SkillInspector" ],
+              "Description": "Mark this skill as inspected",
+              "Function": "MarkInspected",
+              "NextStates": [ "Inspected" ],
+              "DisplayName": "Mark Inspected"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "SkillAppraiser" ],
+              "Description": "Mark this skill as appraised",
+              "Function": "MarkAppraised",
+              "NextStates": [ "Appraised" ],
+              "DisplayName": "Mark Appraised"
+            }
+          ]
+        },
+        {
+          "Name": "Inspected",
+          "DisplayName": "Inspected",
+          "PercentComplete": 45,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Reject the request",
+              "Function": "Reject",
+              "NextStates": [ "Active" ],
+              "DisplayName": "Reject"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Cancel the request",
+              "Function": "Terminate",
+              "NextStates": [ "Terminated" ],
+              "DisplayName": "Terminate"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "SkillAppraiser" ],
+              "Description": "Mark this skill as appraised",
+              "Function": "MarkAppraised",
+              "NextStates": [ "Appraised" ],
+              "DisplayName": "Mark Appraised"
+            }
+          ]
+        },
+        {
+          "Name": "Appraised",
+          "DisplayName": "Appraised",
+          "Description": "skill has been appraised, now awaiting inspection",
+          "PercentComplete": 45,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Reject the request",
+              "Function": "Reject",
+              "NextStates": [ "Active" ],
+              "DisplayName": "Reject"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Cancel the request",
+              "Function": "Terminate",
+              "NextStates": [ "Terminated" ],
+              "DisplayName": "Terminate"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "SkillInspector" ],
+              "Description": "Mark the skill as inspected",
+              "Function": "Accept",
+              "NextStates": [ "EmployerAccepted" ],
+              "DisplayName": "Mark Inspected"
+            }
+          ]
+        },
+        {
+          "Name": "EmployerAccepted",
+          "DisplayName": "Employer Accepted",
+          "Description": "Employer has signed-off on inspection and appraisal",
+          "PercentComplete": 75,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Sign-off on inspection and appraisal",
+              "Function": "Accept",
+              "NextStates": [ "Accepted" ],
+              "DisplayName": "Accept"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Reject the proposed request for the skill",
+              "Function": "Reject",
+              "NextStates": [ "Active" ],
+              "DisplayName": "Reject"
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": [ "CertifiedProfessional" ],
+              "Description": "Cancel this instance of skill verification",
+              "Function": "Terminate",
+              "NextStates": [ "Terminated" ],
+              "DisplayName": "Terminate"
+            }
+          ]
+        },
+        {
+          "Name": "Accepted",
+          "DisplayName": "Accepted",
+          "Description": "skill verification process is complete",
+          "PercentComplete": 100,
+          "Style": "Success",
+          "Transitions": []
+        },
+        {
+          "Name": "Terminated",
+          "DisplayName": "Terminated",
+          "Description": "skill verification has been cancelled",
+          "PercentComplete": 100,
+          "Style": "Failure",
+          "Transitions": []
+        }
+      ]
+    }
+  ]
+}
